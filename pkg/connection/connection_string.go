@@ -32,12 +32,12 @@ func currentUser() (string, error) {
 	return "", errCantDetectUser
 }
 
-// Check if connection url has a correct postgres prefix
+// hasValidPrefix checks if connection url has a correct postgres prefix
 func hasValidPrefix(str string) bool {
 	return strings.HasPrefix(str, "postgres://") || strings.HasPrefix(str, "postgresql://")
 }
 
-// Extract all query vals and return as a map
+// valsFromQuery; Extract all query vals and return as a map
 func valsFromQuery(vals neturl.Values) map[string]string {
 	result := map[string]string{}
 	for k, v := range vals {

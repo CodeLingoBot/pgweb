@@ -35,7 +35,7 @@ type Objects struct {
 	Sequences         []string `json:"sequence"`
 }
 
-// Due to big int number limitations in javascript, numbers should be encoded
+// PrepareBigints; Due to big int number limitations in javascript, numbers should be encoded
 // as strings so they could be properly loaded on the frontend.
 func (res *Result) PrepareBigints() {
 	for i, row := range res.Rows {

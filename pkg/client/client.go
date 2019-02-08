@@ -290,7 +290,7 @@ func (client *Client) TableConstraints(table string) (*Result, error) {
 	return res, err
 }
 
-// Returns all active queriers on the server
+// Activity returns all active queriers on the server
 func (client *Client) Activity() (*Result, error) {
 	if client.serverType == cockroachType {
 		return client.query("SHOW QUERIES")
@@ -442,7 +442,7 @@ func (client *Client) IsIdle() bool {
 	return false
 }
 
-// Fetch all rows as strings for a single column
+// fetchRows; all rows as strings for a single column
 func (client *Client) fetchRows(q string) ([]string, error) {
 	res, err := client.query(q)
 

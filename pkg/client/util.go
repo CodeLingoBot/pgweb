@@ -4,7 +4,7 @@ import (
 	"strings"
 )
 
-// Get short version from the string
+// getMajorMinorVersion gets short version from the string
 // Example: 10.2.3.1 -> 10.2
 func getMajorMinorVersion(str string) string {
 	chunks := strings.Split(str, ".")

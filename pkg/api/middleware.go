@@ -9,7 +9,7 @@ import (
 	"github.com/sosedoff/pgweb/pkg/command"
 )
 
-// Middleware to check database connection status before running queries
+// dbCheckMiddleware; to check database connection status before running queries
 func dbCheckMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		path := strings.Replace(c.Request.URL.Path, command.Opts.Prefix, "", -1)
@@ -49,7 +49,7 @@ func dbCheckMiddleware() gin.HandlerFunc {
 	}
 }
 
-// Middleware to print out request parameters and body for debugging
+// requestInspectMiddleware; to print out request parameters and body for debugging
 func requestInspectMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		err := c.Request.ParseForm()
@@ -57,7 +57,7 @@ func requestInspectMiddleware() gin.HandlerFunc {
 	}
 }
 
-// Middleware to inject CORS headers
+// corsMiddleware; to inject CORS headers
 func corsMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")

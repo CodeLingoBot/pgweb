@@ -455,7 +455,7 @@ func GetInfo(c *gin.Context) {
 	})
 }
 
-// Export database or table data
+// DataExport; database or table data
 func DataExport(c *gin.Context) {
 	db := DB(c)
 

@@ -50,7 +50,7 @@ func NewError(err error) Error {
 	return Error{err.Error()}
 }
 
-// Returns a clean query without any comment statements
+// cleanQuery returns a clean query without any comment statements
 func cleanQuery(query string) string {
 	lines := []string{}
 
@@ -154,7 +154,7 @@ func serveStaticAsset(path string, c *gin.Context) {
 	c.Data(200, assetContentType(path), data)
 }
 
-// Send a query result to client
+// serveResult; Send a query result to client
 func serveResult(c *gin.Context, result interface{}, err interface{}) {
 	if err == nil {
 		successResponse(c, result)
@@ -163,12 +163,12 @@ func serveResult(c *gin.Context, result interface{}, err interface{}) {
 	}
 }
 
-// Send successful response back to client
+// successResponse; Send successful response back to client
 func successResponse(c *gin.Context, data interface{}) {
 	c.JSON(200, data)
 }
 
-// Send an error response back to client
+// errorResponse; Send an error response back to client
 func errorResponse(c *gin.Context, status int, err interface{}) {
 	var message interface{}
 
@@ -184,7 +184,7 @@ func errorResponse(c *gin.Context, status int, err interface{}) {
 	c.AbortWithStatusJSON(status, gin.H{"status": status, "error": message})
 }
 
-// Send a bad request (http 400) back to client
+// badRequest; Send a bad request (http 400) back to client
 func badRequest(c *gin.Context, err interface{}) {
 	errorResponse(c, 400, err)
 }
